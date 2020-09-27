@@ -1,0 +1,29 @@
+<!-- TODO: Replace anything in here with the current state through EJS -->
+<div class="splash box center-children">
+    <div style="text-align: center;">
+
+        <img src="logo.png">
+        
+        <br><br>
+        
+        Yet Another S.B Editor With Too Much Scope
+        
+        <br><br>
+        
+        To begin, please provide a ROM file of the game below.
+
+        <br><br>
+
+        <label class="rom-load">
+            <input type="file" id="romInput" accept=".gba"/>
+            Load ROM...
+        </label>
+
+        <br><br>
+
+        <b class="warning">[ ! ] While compatibility with other language ROMs is on the map, only US works for now.</b>
+
+        <b class="warning"><%- typeof error === "undefined" ? "" : "<br><br>" + error %></b>
+
+    </div>
+</div>

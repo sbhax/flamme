@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700;900&display=swap');
+
+:root {
+    /* Colours */
+    --bg1: #151515;
+    --bg2: #343434;
+    --bg3: #7b7b7b;
+    --fg1: #ffffff;
+    --trim: #e03c28;
+    --warning: #e03c28;
+
+    /* Variables */
+    --navbar-height: 64px;
+
+    /* Defaults */
+    color: var(--fg1);
+    background-color: rgba(0,0,0,0);
+    font-family: 'Overpass', sans-serif;;
+    font-size: 14px
+}
+
+/* Remove terrible body stuff */
+body{
+    padding: 0px;
+    margin: 0px;
+}
+
+/* Restyle defaults */
+input[type="file"] {
+    display: none;
+}
+
+/* Element to center all children. */
+.center-children{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background{
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg1);
+}
+
+/* Generic box styling */
+.box{
+    border-radius: 15px;
+    padding:7px;
+    background-color: var(--bg2);
+    border-bottom: 15px solid var(--trim);
+}
+
+/* Splash square which asks for a ROM */
+.splash{
+    max-width: 300px;
+    max-height: 300px;
+    /* This seems like an awfully botched approach to responsiveness but hey it'll function for now. */
+    width: 100%;
+    height: 100%;
+}
+
+/* Text body inside splash */
+.splash div{
+    text-align:center;
+}
+
+/* ROM button */
+.rom-load{
+    border-radius: 5px;
+    border: 2px solid var(--fg1);
+    padding: 5px;
+    transition: 0.5s;
+}
+
+.rom-load:hover{
+    border: 2px solid var(--trim);
+    transition: 0s;
+}
+
+/* Warning styling */
+.warning{
+    color: var(--warning)
+}
+
+/* Flamme loading icon */
+.flammeIcon{
+    width: 83px;
+    height: 121px;
+    background: url(flamme.png) 0 0;
+    animation: flammeAnim calc(0.067s*6) infinite;
+    display: inline-block;
+}
+
+/* I actually calculated this. Flamme changes every 4 frames on a 59.73hz refresh rate so it's every 0.06696802276s. For this we'll go 0.67 though. */
+
+@keyframes flammeAnim {
+    00.001% {background: url(flamme.png) calc(83px*0) 0;}
+    16.66% {background: url(flamme.png) calc(83px*0) 0;}
+
+    16.661% {background: url(flamme.png) calc(83px*1) 0;}
+    33.33% {background: url(flamme.png) calc(83px*1) 0;}
+
+    33.331% {background: url(flamme.png) calc(83px*2) 0;}
+    50.00% {background: url(flamme.png) calc(83px*2) 0;}
+
+    50.001% {background: url(flamme.png) calc(83px*3) 0;}
+    66.66% {background: url(flamme.png) calc(83px*3) 0;}
+
+    66.661% {background: url(flamme.png) calc(83px*4) 0;}
+    83.33% {background: url(flamme.png) calc(83px*4) 0;}
+
+    83.331% {background: url(flamme.png) calc(83px*5) 0;}
+    100.0% {background: url(flamme.png) calc(83px*5) 0;}
+}
+
+.loading{
+    min-width: 300px;
+    min-height: 300px;
+}
+
+/* Box that contains some flex things, mainly the main panel and the taskbar beneath it */
+
+.romContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.navbar{
+    height: var(--navbar-height);
+    width: 100%;
+    background-color: var(--bg2);
+    display: flex;
+    flex-direction: row;
+}
+
+.main{
+    flex-grow: 1;
+    width: 100%;
+    background-color: var(--bg1);
+}
+
+.nbButton{
+    height: var(--navbar-height);
+    transition: 0.2s;
+    box-shadow: inset 0 0px 0 white;
+    cursor: pointer;
+}
+
+.nbButton:hover{
+    background-color: var(--bg3);
+    transition: 0s
+}
+
+.icon{
+    width: var(--navbar-height);
+    background-color: var(--bg2);
+    background-image: url('icon.png');
+    background-position: center;
+    background-size: 16px 24px;
+    background-repeat: no-repeat;
+}
+
+.icon:hover{
+    background-color: var(--bg3);
+    transition: 0s
+}
+
+.footer{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    opacity: 0.6;
+    text-align: right;
+}
+
+a {
+    opacity: 0.5;
+    color: inherit;
+}
+
+a:hover {
+    opacity: 1
+}
+
+.nbLabel{
+    padding: 15px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.nbSelected{
+    box-shadow: inset 0 -2px 0 white;
+}
+
+.generic-fill{
+    width: 100%;
+    height: 100%
+}
+
+.welcome{
+    opacity: 0.8;
+    text-align: center;
+}
+
+/* Texture view specific */
+
+.textures{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.textures .sidebar{
+    width: 256px;
+    height: 100%;
+}
+
+.sidebar > .info {
+    width: 100%;
+    height: 50%;
+    box-sizing:border-box;
+    padding: 5px;
+    background-color: var(--bg1);
+    overflow-y: auto;
+}
+
+.sidebar > .list {
+    width: 100%;
+    height: 50%;
+    box-sizing:border-box;
+    padding: 5px;
+    background-color: var(--bg2);
+    overflow-y: auto;
+}
+
+.textures .viewport{
+    flex-grow: 3;
+    height: 100%;
+    background-color: var(--bg1);
+    overflow: auto;
+}
